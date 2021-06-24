@@ -41,7 +41,7 @@ components:
       type: object
       properties:
         value:
-          pattern: ^(((?=.*(::))(?!.*\3.+\3))\3?|([\dA-F]{1,4}(\3|:\b|$)|\2))(?4){5}((?4){2}|(((2[0-4]|1\d|[1-9])?\d|25[0-5])\.?\b){4})\z
+          pattern: ^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$
           type: string
       description: A model that represents iSCSI Client that can be associated with a volume as an external attachment.
 tags:
