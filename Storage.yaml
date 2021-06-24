@@ -1,0 +1,51 @@
+openapi: 3.0.0
+info:
+  title: test file
+  contact: {}
+  version: '1.0.0'
+servers:
+- url: https://{defaultHost}
+  variables:
+    defaultHost:
+      default: www.example.com
+paths:
+  /asa/va1/config/iscsi-clients/{clientId}:
+    get:
+      tags:
+      - IscsiClient
+      summary: getIscsiClientById
+      description: Query the iSCSI Client identified by {clientId}.
+      operationId: getIscsiClientById
+      parameters:
+      - name: clientId
+        in: path
+        description: The
+        required: true
+        style: simple
+        schema:
+          pattern: ^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$
+          type: string
+      responses:
+        '200':
+          description: Details of iSCSI Client queried.
+          headers: {}
+          content:
+            application/json:
+              schema:
+                description: REST Response for  IscsiClient type
+      deprecated: false
+components:
+  schemas:
+    ClientObject:
+      title: ClientObject
+      type: object
+      properties:
+        value:
+          pattern: ^(((?=.*(::))(?!.*\3.+\3))\3?|([\dA-F]{1,4}(\3|:\b|$)|\2))(?4){5}((?4){2}|(((2[0-4]|1\d|[1-9])?\d|25[0-5])\.?\b){4})\z
+          type: string
+      description: A model that represents iSCSI Client that can be associated with a volume as an external attachment.
+tags:
+- name: IscsiClient
+  description: ''
+- name: Volume
+  description: ''
