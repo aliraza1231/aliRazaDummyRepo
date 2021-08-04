@@ -41,7 +41,7 @@
                   },
                   "examples": {
 				    "example1":{
-					  "$ref": "#/components/examples/example1"
+					  "$ref": "/components/examples/example1"
 					},
 				    "example2":{
 					  "$ref": "#/components/examples/example2"
