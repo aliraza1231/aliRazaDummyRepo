@@ -1,0 +1,1061 @@
+{
+   "openapi": "3.0.1",
+   "info": {
+      "title": "Multiple Responses Test API",
+      "termsOfService": "https://www.little.bz/ke/tnc.php",
+      "contact": {
+         "email": "heri@little.bz"
+      },
+      "version": "1.0.0"
+   },
+   "servers": [
+      {
+         "url": "https://sms.little.bz/api/v1"
+      }
+   ],
+   "paths": {
+      "/message/{department}": {
+         "post": {
+            "tags": [
+               "Send Messages"
+            ],
+            "summary": "Send both multiple and single messages",
+            "description": "You are able to send both the single and multiple messages with this endpoint. Notice for the multiple endpoint use an array in the `to` parameter",
+            "parameters": [
+               {
+                  "name": "id",
+                  "in": "query",
+                  "required": true,
+                  "schema": {
+                     "type": "integer",
+					 "format": "int32"
+                  },
+                  "example": 3
+               },
+			   {
+                  "name": "name",
+                  "in": "query",
+                  "required": true,
+                  "schema": {
+                     "type": "string"
+                  },
+                  "examples": {
+				    "example1":{
+					  "$ref": "#/components/examples/example1"
+					},
+				    "example2":{
+					  "$ref": "#/components/examples/example2"
+					},
+				    "example3":{
+					  "$ref": "#/components/examples/example3"
+					}
+				  }
+               },
+			   {
+                  "name": "address",
+                  "in": "header",
+                  "required": true,
+                  "schema": {
+                     "type": "string"
+                  },
+                  "example": "8684 S. Lakeview Street Rosedale, NY 11422",
+                  "examples": {
+				    "example4":{
+					  "$ref": "#/components/examples/example4"
+					},
+				    "example5":{
+					  "$ref": "#/components/examples/example5"
+					},
+				    "example6":{
+					  "$ref": "#/components/examples/example6"
+					}
+				  }
+               },
+			   {
+                  "name": "messageStatus",
+                  "in": "query",
+                  "required": true,
+                  "schema": {
+                     "type": "boolean"
+                  }
+               },
+			   {
+                  "name": "department",
+                  "in": "path",
+                  "required": true,
+                  "examples": {
+				    "example4":{
+					  "$ref": "#/components/examples/example7"
+					},
+				    "example5":{
+					  "$ref": "#/components/examples/example8"
+					},
+				    "example6":{
+					  "$ref": "#/components/examples/example9"
+					}
+				  }
+               },
+               {
+                  "name": "nameList",
+                  "required": false,
+                  "in": "query",
+                  "example": [3,4,5]
+               }
+            ],
+            "requestBody": {
+               "content": {
+                  "text/plain": {
+                     "schema": {
+                        "type": "integer"
+                     },
+                     "examples": {
+					    "example-2":{
+					    "$ref": "#/components/examples/example-2"
+					  },
+				      "example-1":{
+					    "$ref": "#/components/examples/example-1"
+					  },
+				      "example0":{
+					    "$ref": "#/components/examples/example0"
+					  }
+					}
+                  }
+               },
+               "required": true
+            },
+            "responses": {
+			   "100": {
+                  "description": "Continue",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "type": "array",
+                           "items": {
+                              "$ref": "#/components/schemas/SuccessResponseModel"
+                           },
+						   "minItems": 1
+                        },
+                        "example": [
+						   {
+							  "status": true,
+							  "message": "This is the booloen true example"
+						   }
+						]
+                     }                   
+                  }
+               },
+			   "200": {
+                  "description": "Continue",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "type": "array",
+                           "items": {
+                              "$ref": "#/components/schemas/SuccessResponseModel"
+                           }
+                        },  
+					    "examples": {
+						  "example11":{
+						    "$ref": "#/components/examples/example11"
+						  },
+						  "example12":{
+						    "$ref": "#/components/examples/example12"
+						  },
+						  "example9":{
+						    "$ref": "#/components/examples/example9"
+						  }
+					    }
+                     },
+                     "application/xml": {
+                        "schema": {
+                           "type": "array",
+                           "items": {
+                              "$ref": "#/components/schemas/SuccessResponseModel"
+                           }
+                        },  
+					    "examples": {
+						  "example12-1":{
+						    "$ref": "#/components/examples/example12-1"
+						  },
+						  "example12-2":{
+						    "$ref": "#/components/examples/example12-2"
+						  },
+						  "example9":{
+						    "$ref": "#/components/examples/example9"
+						  }
+					    }
+                     }					 
+                  }
+               },
+               "201": {
+                  "description": "Continue",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "type": "array",
+                           "items": {
+                              "$ref": "#/components/schemas/SingleMessageModel"
+                           }
+                        },
+						"example": [
+						   {
+							  "from": "Littlecab",
+							  "to": "+254700000001",
+							  "text": "Welcome to our Little world."
+						   }
+						],  
+					    "examples": {
+						  "example13":{
+						    "$ref": "#/components/examples/example13"
+						  },
+						  "example14":{
+						    "$ref": "#/components/examples/example14"
+						  },
+						  "example9":{
+						    "$ref": "#/components/examples/example9"
+						  }
+					    }
+                     },
+                     "application/xml": {
+                        "schema": {
+                           "type": "array",
+                           "items": {
+                              "$ref": "#/components/schemas/SingleMessageModel"
+                           }
+                        },
+						"example": "<item><from>Littlecab</from><to>+254700000001</to><text>Hello World</text></item>", 
+					    "examples": {
+						  "example13-1":{
+						    "$ref": "#/components/examples/example13-1"
+						  },
+						  "example13-2":{
+						    "$ref": "#/components/examples/example13-2"
+						  },
+						  "example9":{
+						    "$ref": "#/components/examples/example9"
+						  }
+					    }
+                     }
+                  }
+               },
+               "202": {
+                  "description": "Continue",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "type": "array",
+                           "items": {
+                              "$ref": "#/components/schemas/MultipleMessageModel"
+                           }
+                        }
+                     }                    
+                  }
+               },
+               "203": {
+                  "description": "",
+                  "headers": {},
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "title": "Response203",
+                           "oneOf": [
+                              {
+                                 "$ref": "#/components/schemas/Cat"
+                              },
+                              {
+                                 "$ref": "#/components/schemas/Dog"
+                              }
+                           ],
+                           "discriminator": {
+                              "propertyName": "pet_type"
+                           }
+                        },
+						"examples":{
+							"example18": {
+								"$ref": "#/components/examples/example18"
+							},
+							"example19": {
+								"$ref": "#/components/examples/example19"
+							},
+							"example20": {
+								"$ref": "#/components/examples/example20"
+							},
+							"example21": {
+								"$ref": "#/components/examples/example21"
+							}
+						}
+                     }
+                  }
+               },
+               "404": {
+                  "description": "Not found",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "type": "array",
+                           "items": {
+                              "$ref": "#/components/schemas/FailureResponseModel"
+                           }
+                        },
+						"example": [
+					      {
+							"status": false,
+							"reason": {
+							  "name": "Abc",
+						  	  "message": "Hello world"
+						    }
+						  }
+						]
+                     },
+                     "application/xml": {
+                        "schema": {
+                           "type": "array",
+                           "items": {
+                              "$ref": "#/components/schemas/FailureResponseModel"
+                           }
+                        },
+						"example": "<item><status>true</status><reason><name>def</name><message>dummy message example</message></reason></item>"
+                     }                  
+                  }
+               },
+               "500": {
+                  "description": "OK",
+                  "content": {
+                     "application/json": { 
+					    "examples": {
+						  "example15":{
+						    "$ref": "#/components/examples/example15"
+						  },
+						  "example16":{
+						    "$ref": "#/components/examples/example16"
+						  },
+						  "example9":{
+						    "$ref": "#/components/examples/example9"
+						  }
+					    }
+                     },
+                     "application/xml": { 
+					    "examples": {
+						  "example15-1":{
+						    "$ref": "#/components/examples/example15-1"
+						  },
+						  "example15-2":{
+						    "$ref": "#/components/examples/example15-2"
+						  },
+						  "example9":{
+						    "$ref": "#/components/examples/example9"
+						  }
+					    }
+                     }
+                  }
+               }
+            }
+         }
+      },
+      "/message/inline-model": {
+         "post": {
+            "tags": [
+               "Send Messages"
+            ],
+            "summary": "Send single messages",
+            "description": "You are able to send both single messages with this endpoint. `to` parameter should be a simple string with the user's mobile number in international format",
+            "parameters": [
+               {
+                  "name": "id",
+                  "in": "query",
+                  "required": true,
+                  "schema": {
+                     "type": "number"
+                  },
+                  "example": 3
+               },
+			   {
+                  "name": "name",
+                  "in": "query",
+                  "required": true,
+                  "schema": {
+                     "type": "string"
+                  },
+                  "examples": {
+				    "example1":{
+					  "summary": "Example 1",
+					  "description": "This is the 1st example",
+					  "value": "abc"
+					},
+					"example2":{
+					  "summary": "Example 2",
+					  "description": "This is the 2nd example",
+					  "value": "xyz"
+					},
+					"example3":{
+					  "summary": "Example 3",
+					  "description": "This is the 3rd example",
+					  "externalValue": "https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.0.md#exampleObject"
+					}
+				  }
+               },
+			   {
+                  "name": "address",
+                  "in": "query",
+                  "required": true,
+                  "schema": {
+                     "type": "string"
+                  },
+                  "example": "8684 S. Lakeview Street Rosedale, NY 11422",
+                  "examples": {
+				    "example4":{
+					  "summary": "Example 4",
+					  "description": "This is the 4th example",
+					  "value": "711 SW. Monroe Avenue Bedford, OH 44146"
+					},
+					"example5":{
+					  "summary": "Example 5",
+					  "description": "This is the 5th example",
+					  "value": "8684 S. Lakeview Street Rosedale, NY 11422"
+					},
+					"example6":{
+					  "summary": "Example 6",
+					  "description": "This is the 6th example",
+					  "externalValue": "https://www.randomlists.com/random-addresses"
+					}
+				  }
+               },
+			   {
+                  "name": "messageStatus",
+                  "in": "query",
+                  "required": true,
+                  "schema": {
+                     "type": "boolean"
+                  }
+               },
+			   {
+                  "name": "department",
+                  "in": "query",
+                  "required": true,
+                  "examples": {
+					"example7":{
+					  "summary": "Example 7",
+					  "description": "This is the 7th example",
+					  "value": "Branch of Database Development and Backup"
+					},
+					"example8":{
+					  "summary": "Example 8",
+					  "description": "This is the 8th example",
+					  "value": "Bureau of Practacal Extranet Maintenance and Acquisition"
+					},
+					"example9":{
+					  "summary": "Example 9",
+					  "description": "This is the 9th example",
+					  "externalValue": "https://www.seventhsanctum.com/generate.php?Genname=itdept"
+					}
+				  }
+               },
+               {
+                  "name": "nameList",
+                  "required": false,
+                  "in": "query",
+                  "example": [3,4,5]
+               }
+            ],
+			"requestBody": {
+               "content": {
+                  "application/xml": {
+                     "schema": {
+                        "type": "object",
+						"properties": {
+						  "desc": {
+						    "type": "string"
+						  },
+						  "color": {
+						    "type": "string"
+						  }
+						}
+                     },
+                     "examples": {
+					    "example-1x":{
+						  "summary": "Example -1x",
+						  "description": "This is the -1xth example",
+						  "value": "<root><color>red</color><desc>110<desc></root>"
+						},
+					    "example-2x":{
+						  "summary": "Example -2x",
+						  "description": "This is the -2xth example",
+						  "value": "<root><desc>110</desc><color>White</color></root>"
+						}
+					 }
+                  }
+               }
+            },
+            "responses": {
+               "200": {
+                  "description": "Successful Response",
+                  "content": {
+                     "application/xml": {
+                        "schema": {
+                           "type": "object",
+                           "properties": {
+                              "channelId": {
+                                 "type": "string"
+                              },
+                              "videoId": {
+                                 "type": "string"
+                              }
+                           },
+                           "description": ""
+                        },
+                        "examples": {
+						  "example21": {
+                            "value": "<root><channelId>dummy channelId</channelId><videoId>bN8_-fU3Rvg</videoId></root>"
+                           },
+						  "example22": {
+                            "value": "<root><channelId>my_channel_id</channelId><videoId>my_video_id</videoId></root>"
+                           }
+						}
+                     },
+                     "application/json": {
+                        "schema": {
+                           "type": "object",
+                           "properties": {
+                              "channelId": {
+                                 "type": "string"
+                              },
+                              "videoId": {
+                                 "type": "string"
+                              }
+                           },
+                           "description": ""
+                        },
+                        "examples": {
+						  "example18": {
+                            "value": {
+							  "channelId": "dummy channelId",
+						      "videoId": "bN8_-fU3Rvg"
+							}
+                           },
+						  "example19": {
+                            "value": {
+							  "channelId": "dummy channelId",
+						      "videoId": "bN8_-fU3Rvg"
+							}
+                           },
+						  "example20": {
+                            "externalValue": "https://www.seventhsanctum.com/generate.php?Genname=itdept"
+                           },
+						}
+                     }
+                  }
+               },
+               "201": {
+                  "description": "Successful Response",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "required": [
+                              "kind"
+                           ],
+                           "type": "object",
+                           "properties": {
+                              "kind": {
+                                 "type": "string"
+                              },
+                              "channelId": {
+                                 "type": "string"
+                              },
+                              "videoId": {
+                                 "type": "string"
+                              },
+                              "playlistId": {
+                                 "type": "string"
+                              }
+                           },
+                           "description": ""
+                        },
+                        "example": {
+                           "kind": "youtube#video"
+                        }
+                     }
+                  }
+               },
+               "400": {
+                  "description": "Error Response",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "title": "pageInfoType",
+                           "required": [
+                              "totalResults",
+                              "resultsPerPage"
+                           ],
+                           "type": "object",
+                           "properties": {
+                              "totalResults": {
+                                 "type": "integer",
+                                 "format": "int32"
+                              },
+                              "resultsPerPage": {
+                                 "type": "integer",
+                                 "format": "int32"
+                              }
+                           },
+                           "description": ""
+                        },
+                        "examples": {
+						  "example21": {
+						    "value":
+						      {
+							    "totalResults": 1000000,
+							    "resultsPerPage": 5
+							  }
+						  },
+						  "example22": {
+						    "value":
+						      {
+							    "totalResults": 2344,
+							    "resultsPerPage": 545
+							  }
+						  },
+						  "example23": {
+						    "externalValue": "https://www.seventhsanctum.com/generate.php?Genname=itdept"
+						  }
+						}
+                     }
+                  }
+               },
+               "500": {
+                  "description": "Error Response",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "title": "itemsType",
+                           "required": [
+                              "kind",
+                              "etag",
+                              "id"
+                           ],
+                           "type": "object",
+                           "properties": {
+                              "kind": {
+                                 "type": "string"
+                              },
+                              "etag": {
+                                 "type": "string"
+                              },
+                              "id": {
+                                 "$ref": "#/components/schemas/idType"
+                              }
+                           },
+                           "description": ""
+                        },
+						"examples": {
+						     "example24": {
+							    "value": {
+								    "kind": "youtube#searchResult",
+								    "etag": "werMF7qAAanMZOXDTFPet8cOO9Q",
+								    "id": {
+									  "kind": "youtube#playlist",
+									  "channelId": "PLoFFlx7RPQHxTnD4mh4flk2OWliQg9TIj"
+								    }
+							    }
+							},
+						     "example25": {
+							    "value": {
+								    "kind": "google#searchResult",
+								    "etag": "str9Q",
+								    "id": {
+									  "kind": "google#playlist",
+									  "channelId": "srfiep7f7reifuher8t8f"
+								    }
+							    }
+							},
+							 "example26": {
+								"externalValue": "https://www.seventhsanctum.com/generate.php?Genname=itdept"
+							}
+						}
+                     }
+                  }
+               }
+            },
+         }
+      }  
+	},
+   "components": {
+	  "examples": {
+		"example-1":{
+		  "summary": "Example -1",
+		  "description": "This is the -1st example",
+		  "value": 123
+		},
+		"example-2":{
+		  "summary": "Example -2",
+		  "description": "This is the -2nd example",
+		  "value": 56
+		},
+		"example0":{
+		  "summary": "Example 0",
+		  "description": "This is the 0th example",
+		  "value": 3
+		},
+	    "example1":{
+		  "summary": "Example 1",
+		  "description": "This is the 1st example",
+		  "value": "abc"
+		},
+		"example2":{
+		  "summary": "Example 2",
+		  "description": "This is the 2nd example",
+		  "value": "xyz"
+		},
+		"example3":{
+		  "summary": "Example 3",
+		  "description": "This is the 3rd example",
+		  "externalValue": "https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.0.md#exampleObject"
+		},
+		"example4":{
+		  "summary": "Example 4",
+		  "description": "This is the 4th example",
+		  "value": "711 SW. Monroe Avenue Bedford, OH 44146"
+		},
+		"example5":{
+		  "summary": "Example 5",
+		  "description": "This is the 5th example",
+		  "value": "8684 S. Lakeview Street Rosedale, NY 11422"
+		},
+		"example6":{
+		  "summary": "Example 6",
+		  "description": "This is the 6th example",
+		  "externalValue": "https://www.randomlists.com/random-addresses"
+		},
+		"example7":{
+		  "summary": "Example 7",
+		  "description": "This is the 7th example",
+		  "value": "Branch of Database Development and Backup"
+		},
+		"example8":{
+		  "summary": "Example 8",
+		  "description": "This is the 8th example",
+		  "value": "Bureau of Practacal Extranet Maintenance and Acquisition"
+		},
+		"example9":{
+		  "summary": "Example 9",
+		  "description": "This is the 9th example",
+		  "externalValue": "https://www.seventhsanctum.com/generate.php?Genname=itdept"
+		},
+		"example10":{
+		  "summary": "Example 10",
+		  "description": "This is the 10th example",
+		  "value": [3,4,5]
+		},
+		"example11":{
+		  "summary": "Example 11",
+		  "description": "This is the 11th example",
+		  "value": [
+			   {
+				  "status": true,
+				  "message": "This is the booloen true example"
+			   }
+			]
+		},
+		"example12":{
+		  "summary": "Example 12",
+		  "description": "This is the 12th example",
+		  "value": [
+			   {
+				  "status": false,
+				  "message": "this is the boolean false example"
+			   }
+			]
+		},
+		"example12-1":{
+		  "summary": "Example 12-1",
+		  "description": "This is 12-1st example",
+		  "value": "<item><status>true</status><message>This is the booloen true example</message></item>"
+		},
+		"example12-2":{
+		  "summary": "Example 12-2",
+		  "description": "This is 12-2nd example",
+		  "value": "<item><status>false</status><message>This is the booloen false example</message></item>"
+		},
+		"example13":{
+		  "summary": "Example 13",
+		  "description": "This is the 13th example",
+		  "value": [
+			   {
+				  "from": "Littlecab",
+				  "to": "+254700000001",
+				  "text": "Welcome to our Little world."
+			   }
+			]
+		},
+		"example13-1":{
+		  "summary": "Example 13-1",
+		  "description": "This is the 13-1st example",
+		  "value": "<item><from>Littlecab</from><to>+254700000001</to><text>Hello World</text></item>"
+		},
+		"example13-2":{
+		  "summary": "Example 13-2",
+		  "description": "This is the 13-2nd example",
+		  "value": "<item><from>Commons</from><to>APIMatic</to><text>dummy text</text></item>"
+		},
+		"example14":{
+		  "summary": "Example 14",
+		  "description": "This is the 14th example",
+		  "value": [
+			   {
+				  "from": "example",
+				  "to": "+25471",
+				  "text": "Welcome!"
+			   }
+			]
+		},
+		"example15":{
+		  "summary": "Example 15",
+		  "description": "This is the 15th example",
+		  "value": [
+			   {
+				  "from": "example",
+				  "to": [
+					 "+25471",
+					 "+25472",
+					 "+25473"
+				  ],
+				  "text": "Welcome!"
+			   }
+			]
+		},
+		"example15-1":{
+		  "summary": "Example 15-1",
+		  "description": "This is the 15-1st example",
+		  "value": "<item><from>Littlecab</from><to><item>+254700000001</item><item>+456789098768</item><item>+987654345677</item></to><text>Hello World</text></item>"
+		},
+		"example15-2":{
+		  "summary": "Example 15-2",
+		  "description": "This is the 15-2nd example",
+		  "value": "<item><from>Commons</from><to><item>+456</item><item>+567</item><item>+765</item></to><text>Dummy example text</text></item>"
+		},
+		"example16":{
+		  "summary": "Example 16",
+		  "description": "This is the 16th example",
+		  "value": 
+		    [
+			   {
+				  "from": "Littlecab",
+				  "to": [
+					 "+254700000001",
+					 "+254700000002",
+					 "+254700000003"
+				  ],
+				  "text": "Welcome to our Little world."
+			   }
+			]
+		},
+  	    "example17":{
+		  "summary": "Example 17",
+		  "description": "This is the 17th example",
+		  "value":
+		  [
+		    {
+	          "status": false,
+	          "reason": {
+		        "name": "Abc",
+		        "message": "Hello world"
+	          }
+	        }
+		  ]
+		},
+		"example18":{
+		  "summary": "Example 18",
+		  "description": "This is the 18th example",
+		  "value": 
+		    {
+				"name": "Oliver",
+				"color": "White"
+			}
+		},
+		"example19":{
+		  "summary": "Example 19",
+		  "description": "This is the 19th example",
+		  "value": 
+		    {
+				"name": "Leo",
+				"color": "Brown"
+			}
+		},
+		"example20":{
+		  "summary": "Example 20",
+		  "description": "This is the 20th example",
+		  "value": 
+		    {
+				"name": "Bella",
+				"breed": "German Shepherd"
+			}
+		},
+		"example21":{
+		  "summary": "Example 21",
+		  "description": "This is the 21st example",
+		  "value": 
+		    {
+				"name": "Charlie",
+				"breed": "Greyhound"
+			}
+		}
+	  },
+      "schemas": {
+         "SingleMessageModel": {
+            "type": "object",
+            "properties": {
+               "from": {
+                  "type": "string",
+                  "description": "The SMS header you would like to use, these should be registered under the account being managed by the API KEY used.",
+                  "example": "Littlecab"
+               },
+               "to": {
+                  "type": "string",
+                  "description": "Mobile number of the recipient of the message with the country code included",
+                  "example": "+254700000001"
+               },
+               "text": {
+                  "type": "string",
+                  "description": "Your message to the recipient user",
+                  "example": "Welcome to our Little world."
+               }
+            },
+            "description": "Any payload to send a single message should be in this format"
+         },
+         "MultipleMessageModel": {
+            "type": "object",
+            "properties": {
+               "from": {
+                  "type": "string",
+                  "description": "The SMS header you would like to use, these should be registered under the account being managed by the API KEY used.",
+                  "example": "Littlecab"
+               },
+               "to": {
+                  "type": "array",
+                  "description": "List of mobile numbers in the international format receiving your message",
+                  "example": [
+                     "+254700000001",
+                     "+254700000002",
+                     "+254700000003"
+                  ],
+                  "items": {
+                     "type": "string",
+                     "description": "Mobile number of the recipient of the message with the country code included",
+                     "example": "+254700000001"
+                  }
+               },
+               "text": {
+                  "type": "string",
+                  "description": "Your message to the recipient user",
+                  "example": "Welcome to our Little world."
+               }
+            },
+            "description": "Any payload to send a message to multiple numbers should be in this format"
+         },
+         "SuccessResponseModel": {
+            "type": "object",
+            "properties": {
+               "status": {
+                  "type": "boolean",
+                  "description": "Status of the response, when unsuccessful this value will be `false`",
+                  "example": true
+               },
+               "message": {
+                  "type": "string",
+                  "description": "Successful message to your previous request. Messages:\n * `Request sent to queue` => \"Your messages are being processed for delivery to your different recipients\"\n",
+                  "example": "Request sent to queue"
+               }
+            },
+            "description": "Any successful response will have this format"
+         },
+         "FailureResponseModel": {
+            "type": "object",
+            "properties": {
+               "status": {
+                  "type": "boolean",
+                  "description": "Status of the response, when successful this value will be `true`",
+                  "example": false
+               },
+               "reason": {
+                  "type": "object",
+                  "properties": {
+                     "name": {
+                        "type": "string",
+                        "description": "Name of the error generated",
+                        "example": "Unauthorized"
+                     },
+                     "message": {
+                        "type": "string",
+                        "description": "Literal description of the error generated",
+                        "example": "Invalid key provided"
+                     }
+                  },
+                  "description": "Reason of the failure"
+               }
+            },
+            "description": "Any unsuccessful response with have this format"
+         },
+         "idType": {
+            "title": "idType",
+            "required": [
+               "kind"
+            ],
+            "type": "object",
+            "properties": {
+               "kind": {
+                  "type": "string"
+               },
+               "channelId": {
+                  "type": "string"
+               },
+               "videoId": {
+                  "type": "string"
+               }
+            },
+            "description": ""
+         },
+         "Cat": {
+            "title": "Cat",
+            "required": [
+               "name",
+               "color"
+            ],
+            "type": "object",
+            "properties": {
+               "name": {
+                  "type": "string"
+               },
+               "color": {
+                  "type": "string"
+               }
+            }
+         },
+         "Dog": {
+            "title": "Dog",
+            "required": [
+               "name",
+               "breed"
+            ],
+            "type": "object",
+            "properties": {
+               "name": {
+                  "type": "string"
+               },
+               "breed": {
+                  "type": "string"
+               }
+            }
+         }
+      },
+      "securitySchemes": {
+         "keyAuth": {
+            "type": "http",
+            "scheme": "bearer"
+         }
+      }
+   },
+   "security": [
+      {
+         "keyAuth": []
+      }
+   ]
+}
