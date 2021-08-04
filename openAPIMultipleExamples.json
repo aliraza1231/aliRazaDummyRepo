@@ -390,7 +390,7 @@
 					"example3":{
 					  "summary": "Example 3",
 					  "description": "This is the 3rd example",
-					  "externalValue": "https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.0.md#exampleObject"
+					  "externalValue": "/versions/3.0.0.md#exampleObject"
 					}
 				  }
                },
@@ -416,7 +416,7 @@
 					"example6":{
 					  "summary": "Example 6",
 					  "description": "This is the 6th example",
-					  "externalValue": "https://www.randomlists.com/random-addresses"
+					  "externalValue": "/random-addresses"
 					}
 				  }
                },
@@ -446,7 +446,7 @@
 					"example9":{
 					  "summary": "Example 9",
 					  "description": "This is the 9th example",
-					  "externalValue": "https://www.seventhsanctum.com/generate.php?Genname=itdept"
+					  "externalValue": "/generate.php?Genname=itdept"
 					}
 				  }
                },
@@ -539,7 +539,7 @@
 							}
                            },
 						  "example20": {
-                            "externalValue": "https://www.seventhsanctum.com/generate.php?Genname=itdept"
+                            "externalValue": "/generate.php?Genname=itdept"
                            },
 						}
                      }
@@ -615,7 +615,7 @@
 							  }
 						  },
 						  "example23": {
-						    "externalValue": "https://www.seventhsanctum.com/generate.php?Genname=itdept"
+						    "externalValue": "/generate.php?Genname=itdept"
 						  }
 						}
                      }
@@ -668,7 +668,7 @@
 							    }
 							},
 							 "example26": {
-								"externalValue": "https://www.seventhsanctum.com/generate.php?Genname=itdept"
+								"externalValue": "/generate.php?Genname=itdept"
 							}
 						}
                      }
@@ -708,7 +708,7 @@
 		"example3":{
 		  "summary": "Example 3",
 		  "description": "This is the 3rd example",
-		  "externalValue": "https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.0.md#exampleObject"
+		  "externalValue": "/versions/3.0.0.md#exampleObject"
 		},
 		"example4":{
 		  "summary": "Example 4",
@@ -723,7 +723,7 @@
 		"example6":{
 		  "summary": "Example 6",
 		  "description": "This is the 6th example",
-		  "externalValue": "https://www.randomlists.com/random-addresses"
+		  "externalValue": "/random-addresses"
 		},
 		"example7":{
 		  "summary": "Example 7",
@@ -738,7 +738,7 @@
 		"example9":{
 		  "summary": "Example 9",
 		  "description": "This is the 9th example",
-		  "externalValue": "https://www.seventhsanctum.com/generate.php?Genname=itdept"
+		  "externalValue": "/generate.php?Genname=itdept"
 		},
 		"example10":{
 		  "summary": "Example 10",
