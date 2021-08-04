@@ -390,7 +390,7 @@
 					"example3":{
 					  "summary": "Example 3",
 					  "description": "This is the 3rd example",
-					  "externalValue": "/versions/3.0.0.md#exampleObject"
+					  "externalValue": "http://google.com/versions/3.0.0.md#exampleObject"
 					}
 				  }
                },
