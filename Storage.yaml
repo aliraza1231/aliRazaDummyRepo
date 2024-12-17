@@ -9,7 +9,7 @@ servers:
     defaultHost:
       default: www.example.com
 paths:
-  /asa/va1/config/iscsi-clients/{clientId}:
+  /asa/va1/confifg/iscsi-clients/{clientId}:
     get:
       tags:
       - IscsiClient
