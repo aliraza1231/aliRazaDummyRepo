@@ -14,7 +14,7 @@ paths:
       tags:
       - IscsiClient
       summary: getIscsiClientById
-      description: Query the iSCSI Client identified by {clientId}.
+      description: Query the iSCSI Client identified by {clientId}..
       operationId: getIscsiClientById
       parameters:
       - name: clientId
