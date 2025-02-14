@@ -1,0 +1,6 @@
+title: ClientObject
+type: object
+properties:
+  value:
+    $ref: './def.yaml'
+description: A model that represents iSCSI Client that can be associated with a volume as an external attachment.
